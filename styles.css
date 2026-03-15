@@ -1,0 +1,233 @@
+/* Estilo do h1 para combinar com painel de LED */
+h1 {
+    font-family: 'Seven Segment', 'Courier New', Courier, monospace;
+    font-size: 2.5rem;
+    letter-spacing: 0.18em;
+    text-align: center;
+    color: #111;
+    background: transparent;
+    border-radius: 8px;
+    border: none;
+    padding: 10px 0 10px 0;
+    margin-bottom: 18px;
+    margin-top: 0;
+    transition: color 0.3s, background 0.3s, border 0.3s;
+}
+/* Wrapper para input com logo */
+.input-led-wrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 8px;
+}
+
+.led-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 56px;
+    min-height: 56px;
+    font-family: 'Seven Segment', 'Courier New', Courier, monospace;
+    font-size: 2.1rem;
+    border-radius: 8px;
+    margin-right: 2px;
+    user-select: none;
+    box-shadow: none;
+}
+
+.led-g {
+    background: #2a0000;
+    color: #ff5252;
+    outline: 2px solid #ff5252;
+    box-shadow: none;
+}
+.led-a {
+    background: #002a00;
+    color: #39ff14;
+    outline: 2px solid #39ff14;
+    box-shadow: none;
+}
+
+@media (max-width: 600px) {
+    .container {
+        width: 100vw;
+        height: 100vh;
+        min-width: 100vw;
+        min-height: 100vh;
+        border-radius: 0;
+        box-shadow: none;
+        justify-content: flex-start;
+        padding-top: 40px;
+    }
+    #toggle-theme {
+        top: 180px !important;
+    }
+    form > div[style*="display: flex"] {
+        flex-direction: column !important;
+        gap: 8px !important;
+    }
+    form button {
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        box-sizing: border-box;
+    }
+}
+
+body {
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
+    overflow: hidden;
+    transition: background-color 0.5s ease;
+}
+
+html {
+    overflow: hidden;
+    height: 100vh;
+}
+
+.container {
+    background: white;
+    padding: 24px 18px;
+    border-radius: 10px;
+    box-shadow: none;
+    width: 98%;
+    max-width: 480px;
+    min-width: 320px;
+    min-height: 490px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+    transition: background-color 0.5s ease;
+}
+
+.input-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+label { font-weight: bold; display: block; }
+.gas {
+    color: #d32f2f; /* Vermelho */
+    text-align: center;
+    width: 100%;
+    display: block;
+}
+.alc {
+    color: #39ff14; /* Verde igual ao input do álcool */
+    text-align: center;
+    width: 100%;
+    display: block;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: none;
+    border-radius: 8px;
+    box-sizing: border-box;
+    background: #222;
+    color: #39ff14;
+    font-family: 'Seven Segment', 'Courier New', Courier, monospace;
+    font-size: 2.2rem;
+    letter-spacing: 0.15em;
+    text-align: center;
+    outline: 2px solid #39ff14;
+    transition: outline 0.2s;
+    box-shadow: none;
+}
+
+/* Gasolina: vermelho */
+#gasolina {
+    background: #2a0000;
+    color: #ff5252;
+    outline: 2px solid #ff5252;
+    box-shadow: none;
+}
+#gasolina:focus {
+    outline: 3px solid #ff5252;
+    background: #2a0000;
+    color: #ff5252;
+}
+
+/* Álcool: verde */
+#alcool {
+    background: #002a00;
+    color: #39ff14;
+    outline: 2px solid #39ff14;
+    box-shadow: none;
+}
+#alcool:focus {
+    outline: 3px solid #39ff14;
+    background: #002a00;
+    color: #39ff14;
+}
+
+input:focus {
+    outline: 3px solid #fff700;
+    background: #111;
+}
+
+/* Fonte Seven Segment para simular painel de led */
+@font-face {
+    font-family: 'Seven Segment';
+    src: local('DSEG7 Classic'), url('https://fonts.cdnfonts.com/s/17397/DSEG7Classic-Regular.woff') format('woff');
+    font-display: swap;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: #222;
+    color: #fff700;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 2.2rem;
+    font-family: 'Seven Segment', 'Courier New', Courier, monospace;
+    letter-spacing: 0.15em;
+    text-align: center;
+    outline: 2px solid #fff700;
+    transition: outline 0.2s, background 0.2s;
+    box-shadow: none;
+}
+
+button[type="submit"]:focus, button[type="submit"]:hover {
+    outline: 3px solid #fff700;
+    background: #333300;
+    color: #fff700;
+}
+
+#resultado {
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.res-gas { background: #ffebee; color: #d32f2f; }
+.res-alc { background: #e3f2fd; color: #0d47a1; }
+
+/* Modo noturno: textos brancos */
+.night-mode,
+.night-mode label,
+.night-mode .gas,
+.night-mode .alc,
+.night-mode h1,
+.night-mode #resultado,
+.night-mode .res-gas,
+.night-mode .res-alc {
+    color: #fff !important;
+}
+
