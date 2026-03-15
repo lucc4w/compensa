@@ -93,7 +93,11 @@
             position: absolute; left: 10px; top: 50%; transform: translateY(-50%);
             width: 25px; height: 25px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            font-size: 0.7rem; font-weight: bold; color: white;
+            font-family: 'Arial Black', Gadget, sans-serif;
+            font-size: 1rem;
+            font-weight: 900;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
         .led-g { background: linear-gradient(135deg, #f6d365 0%, #fda085 100%); }
@@ -124,7 +128,7 @@
     <div class="blob"></div>
     <div class="blob"></div>
     <div class="container">
-        <button id="toggle-theme" type="button">☀️ Dia</button>
+        <button id="toggle-theme" type="button">🌙 Modo Noite</button>
         <h1><img src="gas-station-svgrepo-com.svg" alt="Ícone" style="height: 40px; vertical-align: middle; margin-right: 10px;"> Compensa App</h1>
         <form id="form-flex" onsubmit="calcular(); return false;" autocomplete="off">
             <div class="input-group">
