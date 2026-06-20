@@ -1,157 +1,184 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Descubra se compensa mais abastecer com Álcool ou Gasolina. Calculadora rápida e simples para economizar no posto de combustível.">
-    <title>Álcool ou Gasolina?</title>
-    <link rel="icon" type="image/svg+xml" href="gas-station-svgrepo-com.svg">
-    <style>
-        :root {
-            --bg-gradient: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
-            --glass-bg: rgba(255, 255, 255, 0.25);
-            --glass-border: 1px solid rgba(255, 255, 255, 0.3);
-            --text-color: #333;
-            --input-bg: rgba(255, 255, 255, 0.5);
-            --blob-1: #ff9a9e;
-            --blob-2: #fad0c4;
-            --btn-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-        body.night-mode {
-            --bg-gradient: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
-            --glass-bg: rgba(0, 0, 0, 0.3);
-            --glass-border: 1px solid rgba(255, 255, 255, 0.1);
-            --text-color: #f0f0f0;
-            --input-bg: rgba(0, 0, 0, 0.3);
-            --blob-1: #4facfe;
-            --blob-2: #00f2fe;
-        }
-        
-        * { box-sizing: border-box; }
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: var(--bg-gradient);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            overflow: hidden;
-            transition: background 0.5s ease;
-        }
-
-        /* Liquid Blobs */
-        .blob {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(40px);
-            z-index: -1;
-            opacity: 0.8;
-            animation: float 10s infinite alternate;
-        }
-        .blob:nth-child(1) { width: 300px; height: 300px; background: var(--blob-1); top: -50px; left: -50px; }
-        .blob:nth-child(2) { width: 350px; height: 350px; background: var(--blob-2); bottom: -50px; right: -50px; animation-delay: -5s; }
-        @keyframes float { from { transform: translate(0,0); } to { transform: translate(30px, 50px); } }
-
-        /* Glass Container */
-        .container {
-            background: var(--glass-bg);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: var(--glass-border);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            border-radius: 20px;
-            padding: 75px 40px 40px;
-            width: 90%;
-            max-width: 400px;
-            color: var(--text-color);
-            position: relative;
-            text-align: center;
-        }
-
-        h1 { margin-top: 0; font-weight: 300; letter-spacing: 1px; }
-        
-        .input-group { margin-bottom: 20px; text-align: left; }
-        label { display: block; margin-bottom: 8px; font-weight: 500; font-size: 0.9rem; }
-        
-        .input-led-wrapper { position: relative; }
-        input {
-            width: 100%;
-            padding: 12px 15px 12px 45px;
-            border: none;
-            border-radius: 12px;
-            background: var(--input-bg);
-            color: var(--text-color);
-            font-size: 1rem;
-            outline: none;
-            box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
-            transition: 0.3s;
-        }
-        input:focus { box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.3); }
-
-        .led-logo {
-            position: absolute; left: 10px; top: 50%; transform: translateY(-50%);
-            width: 25px; height: 25px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-family: 'Arial Black', Gadget, sans-serif;
-            font-size: 1rem;
-            font-weight: 900;
-            color: white;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-        .led-g { background: linear-gradient(135deg, #f6d365 0%, #fda085 100%); }
-        .led-a { background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%); }
-
-        button {
-            background: var(--btn-bg); color: white; border: none; padding: 12px;
-            border-radius: 12px; font-size: 1rem; cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-        button:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
-        
-        #toggle-theme {
-            position: absolute; top: 20px; right: 20px;
-            background: rgba(0,0,0,0.1); color: var(--text-color);
-            padding: 5px 12px; font-size: 0.8rem;
-            width: auto !important; min-width: auto !important;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-        
-        #resultado { margin-top: 20px; padding: 15px; border-radius: 12px; font-weight: bold; transition: 0.3s; }
-        .res-gas { background: rgba(253, 160, 133, 0.4); color: #d35400; border: 1px solid rgba(211, 84, 0, 0.3); }
-        .res-alc { background: rgba(132, 250, 176, 0.4); color: #27ae60; border: 1px solid rgba(39, 174, 96, 0.3); }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Compensa | Calcule o Melhor Custo-Benefício</title>
+  <meta name="description" content="Descubra rapidamente se vale mais a pena abastecer com gasolina ou álcool. Insira os preços e a eficiência do seu carro e saiba na hora com o Compensa." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div class="blob"></div>
-    <div class="blob"></div>
-    <div class="container">
-        <button id="toggle-theme" type="button">🌙 Modo Noite</button>
-        <h1><img src="gas-station-svgrepo-com.svg" alt="Ícone" style="height: 40px; vertical-align: middle; margin-right: 10px;"> Compensa App</h1>
-        <form id="form-flex" onsubmit="calcular(); return false;" autocomplete="off">
-            <div class="input-group">
-                <label class="gas" for="gasolina">Preço Gasolina</label>
-                <div class="input-led-wrapper">
-                    <span class="led-logo led-g">G</span>
-                    <input type="number" id="gasolina" step="0.01" placeholder="Ex: R$5.80">
-                </div>
+
+  <!-- Fundo animado -->
+  <div class="bg-orbs" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <div class="wrapper">
+
+    <!-- CABEÇALHO -->
+    <header>
+      <span class="header-icon" aria-hidden="true">⛽</span>
+      <h1>Compensa</h1>
+      <p>Descubra qual combustível vale&nbsp;mais a&nbsp;pena hoje</p>
+    </header>
+
+    <!-- CARD DE INPUTS -->
+    <section class="card" aria-label="Preços dos combustíveis">
+      <p class="card-title">Preço por litro</p>
+
+      <div class="fuel-grid">
+        <!-- GASOLINA -->
+        <div class="fuel-block">
+          <div class="fuel-label">
+            <span class="dot dot-gas"></span>
+            Gasolina
+          </div>
+          <div class="input-group">
+            <label for="price-gas">Preço (R$)</label>
+            <div class="input-wrapper">
+              <span class="prefix">R$</span>
+              <input
+                type="text"
+                id="price-gas"
+                placeholder="0,00"
+                inputmode="numeric"
+                aria-label="Preço da gasolina por litro"
+              />
             </div>
-            <div class="input-group">
-                <label class="alc" for="alcool">Preço Álcool</label>
-                <div class="input-led-wrapper">
-                    <span class="led-logo led-a">A</span>
-                    <input type="number" id="alcool" step="0.01" placeholder="Ex: R$3.90">
-                </div>
+            <span class="error-msg" id="err-price-gas">Valor inválido</span>
+          </div>
+        </div>
+
+        <!-- ÁLCOOL -->
+        <div class="fuel-block">
+          <div class="fuel-label">
+            <span class="dot dot-eth"></span>
+            Álcool
+          </div>
+          <div class="input-group">
+            <label for="price-eth">Preço (R$)</label>
+            <div class="input-wrapper">
+              <span class="prefix">R$</span>
+              <input
+                type="text"
+                id="price-eth"
+                placeholder="0,00"
+                inputmode="numeric"
+                aria-label="Preço do álcool por litro"
+              />
             </div>
-            <div style="display: flex; gap: 10px; width: 100%;">
-                <button id="btn-calcular" type="submit" style="flex:1;">Calcular</button>
-                <button id="btn-resetar" type="button" style="flex:1; display:none;" onclick="resetar()">Calcular Novamente</button>
-            </div>
-        </form>
-        <div id="resultado"></div>
+            <span class="error-msg" id="err-price-eth">Valor inválido</span>
+          </div>
+        </div>
+      </div>
+
+      <hr class="divider" />
+
+      <p class="card-title">Consumo do seu carro</p>
+
+      <div class="efficiency-grid">
+        <!-- KM/L GASOLINA -->
+        <div class="input-group">
+          <label for="km-gas">
+            <span style="color:var(--orange)">⬛ Gasolina</span> km/l
+          </label>
+          <div class="input-wrapper has-suffix">
+            <input
+              type="number"
+              id="km-gas"
+              min="0"
+              step="0.1"
+              placeholder="10"
+              inputmode="decimal"
+              aria-label="Consumo do carro com gasolina em km por litro"
+            />
+            <span class="suffix">km/l</span>
+          </div>
+          <span class="error-msg" id="err-km-gas">Valor inválido</span>
+        </div>
+
+        <!-- KM/L ÁLCOOL -->
+        <div class="input-group">
+          <label for="km-eth">
+            <span style="color:var(--green)">⬛ Álcool</span> km/l
+          </label>
+          <div class="input-wrapper has-suffix">
+            <input
+              type="number"
+              id="km-eth"
+              min="0"
+              step="0.1"
+              placeholder="7"
+              inputmode="decimal"
+              aria-label="Consumo do carro com álcool em km por litro"
+            />
+            <span class="suffix">km/l</span>
+          </div>
+          <span class="error-msg" id="err-km-eth">Valor inválido</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- BOTÃO CALCULAR -->
+    <button class="btn-calc" id="btn-calc" type="button" aria-label="Calcular melhor combustível">
+      <span class="btn-inner">
+        <span class="btn-icon" aria-hidden="true">🔍</span>
+        Calcular agora
+      </span>
+    </button>
+
+    <!-- RESULTADO -->
+    <section id="result-section" aria-live="polite" aria-label="Resultado do cálculo">
+      <div class="result-card" id="result-card">
+        <div class="result-shine" aria-hidden="true"></div>
+        <span class="result-emoji" id="result-emoji"></span>
+        <div class="result-badge" id="result-badge"></div>
+        <h2 class="result-headline" id="result-headline"></h2>
+        <p class="result-sub" id="result-sub"></p>
+        <div class="cost-pills" id="cost-pills"></div>
+        <div class="economy-box" id="economy-box"></div>
+        <div class="ratio-hint" id="ratio-hint"></div>
+      </div>
+    </section>
+
+    <!-- BOTÃO LIMPAR (Feat #3) -->
+    <div class="btn-clear-wrap" id="btn-clear-wrap">
+      <button class="btn-clear" id="btn-clear" type="button" aria-label="Limpar campos e recalcular">
+        ↺ Limpar e recalcular
+      </button>
     </div>
-    <script src="script.js"></script>
+
+    <!-- COMO FUNCIONA -->
+    <section class="card how-section" aria-label="Como funciona o cálculo">
+      <p class="card-title">Como funciona?</p>
+      <div class="how-grid">
+        <div class="how-item">
+          <div class="how-num">1</div>
+          <p>Informe o preço de cada combustível por litro</p>
+        </div>
+        <div class="how-item">
+          <div class="how-num">2</div>
+          <p>Informe quantos km seu carro faz por litro de cada</p>
+        </div>
+        <div class="how-item">
+          <div class="how-num">3</div>
+          <p>Calculamos o custo por km e mostramos o mais barato</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      Feito por @lucc4w
+    </footer>
+
+  </div>
+
+  <script src="app.js"></script>
 </body>
 </html>
